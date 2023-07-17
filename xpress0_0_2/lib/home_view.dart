@@ -1,6 +1,12 @@
 part of xpress;
 
 class HomeView extends StatelessWidget {
+  final String currentTemp;
+
+  const HomeView({
+    required this.currentTemp,
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -17,6 +23,15 @@ class HomeView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 50),
+            Text(
+              "Current temp:$currentTemp",
+              style: const TextStyle(
+                color: Colors.cyan,
+                fontSize: 20,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            const SizedBox(height: 20),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/login');
