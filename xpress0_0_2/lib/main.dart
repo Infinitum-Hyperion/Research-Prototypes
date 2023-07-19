@@ -4,6 +4,8 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 
+import 'package:thp_markhor/markhor.dart';
+
 part './home_view.dart';
 part './public_view.dart';
 part './login_view.dart';
@@ -12,8 +14,14 @@ part './public_blog.dart';
 part './member_only_blog.dart';
 
 void main() async {
-  final String res = await HttpRequest.getString(
+  final Network network = Network();
+  final String _res = await HttpRequest.getString(
       "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
+
+  final String res = await network.httpRequest(() async {
+    return await HttpRequest.getString(
+        "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
+  });
 
   runApp(XPressApp(
     temp: res,
