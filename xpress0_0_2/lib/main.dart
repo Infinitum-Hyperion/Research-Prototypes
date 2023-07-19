@@ -12,16 +12,23 @@ part './login_view.dart';
 part './member_only_view.dart';
 part './public_blog.dart';
 part './member_only_blog.dart';
+part './auth_api.dart';
 
 void main() async {
+  const AuthAPI authAPI = AuthAPI();
   final Network network = Network();
   final String _res = await HttpRequest.getString(
       "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
 
-  final String res = await network.httpRequest(() async {
-    return await HttpRequest.getString(
-        "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
-  });
+  final String res = await network.httpRequest(
+    () async {
+      return await HttpRequest.getString(
+          "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
+    },
+    configs: const HttpRequestConfigs(
+      delay: Duration(seconds: 2),
+    ),
+  );
 
   runApp(XPressApp(
     temp: res,
