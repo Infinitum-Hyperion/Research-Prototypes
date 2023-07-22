@@ -7,6 +7,11 @@ class PublicBlog extends StatelessWidget {
   final MethodInvocationObserver<Widget> invocationObserver =
       MethodInvocationObserver();
 
+  PublicBlog() {
+    observatory.attachPublisherFor<MethodInvocationReport>(invocationObserver);
+    Future.delayed(const Duration(seconds: 4), () => observatory.dump());
+  }
+
   @override
   Widget build(BuildContext context) {
     return invocationObserver.call(() {

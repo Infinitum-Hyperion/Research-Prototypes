@@ -14,6 +14,8 @@ part './public_blog.dart';
 part './member_only_blog.dart';
 part './auth_api.dart';
 
+final Observatory observatory = Observatory();
+
 void main() async {
   const AuthAPI authAPI = AuthAPI();
   final Network network = Network();
