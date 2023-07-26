@@ -48,7 +48,19 @@ class HomeView extends StatelessWidget {
             const SizedBox(height: 20),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/login');
+                if (isAuthenticatedAsMember) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => MemberOnlyBlog(),
+                    ),
+                  );
+                } else {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => LoginView(),
+                    ),
+                  );
+                }
               },
               child: const Text('Special Editions'),
             ),

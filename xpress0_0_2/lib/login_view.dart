@@ -65,7 +65,11 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 onSubmitted: (_) {
-                  Navigator.of(context).pushNamed('/member-only-page');
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => MemberOnlyBlog(),
+                    ),
+                  );
                 },
               ),
             ],
