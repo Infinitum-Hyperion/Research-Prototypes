@@ -1,6 +1,14 @@
 part of xpress;
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => LoginViewState();
+}
+
+class LoginViewState extends State<LoginView> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController pwdController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -13,6 +21,7 @@ class LoginView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
+                controller: emailController,
                 style: const TextStyle(
                   color: Colors.purple,
                 ),
@@ -39,6 +48,7 @@ class LoginView extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextField(
+                controller: pwdController,
                 style: const TextStyle(
                   color: Colors.purple,
                 ),
@@ -64,12 +74,20 @@ class LoginView extends StatelessWidget {
                     ),
                   ),
                 ),
-                onSubmitted: (_) {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (BuildContext context) => MemberOnlyBlog(),
-                    ),
-                  );
+                onSubmitted: (_) async {
+                  final r = await HttpRequest.getString(authAPI.urlAddress);
+                  if (r == 'true') {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => MemberOnlyBlog(),
+                      ),
+                    );
+                  } else {
+                    setState(() {
+                      emailController.clear();
+                      pwdController.clear();
+                    });
+                  }
                 },
               ),
             ],

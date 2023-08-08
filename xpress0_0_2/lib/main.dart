@@ -7,20 +7,18 @@ import 'package:flutter/material.dart';
 
 import 'package:thp_markhor/markhor.dart';
 
+import 'package:xpress/mkproj/mkproj.dart';
+
 part './home_view.dart';
 part './public_view.dart';
 part './login_view.dart';
 part './public_blog.dart';
 part './member_only_blog.dart';
-part './auth_api.dart';
 
-final Observatory observatory = Observatory();
 bool isAuthenticatedAsMember = false;
 
 void main() async {
-  const AuthAPI authAPI = AuthAPI();
-  final Network network = Network();
-
+  await workstation.initAsyncComponents();
   final String res = await network.httpRequest(
     () async {
       return await HttpRequest.getString(
