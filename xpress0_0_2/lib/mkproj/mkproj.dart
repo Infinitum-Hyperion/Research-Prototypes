@@ -1,6 +1,6 @@
 library xpress.mkproj;
 
-import 'package:thp_markhor/markhor.dart';
+import 'package:thp_autocloud/autocloud_sdk.dart';
 import 'dart:io';
 
 part 'auth_api.dart';

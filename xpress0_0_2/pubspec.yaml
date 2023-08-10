@@ -28,8 +28,8 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  thp_markhor:
-    path: ../../Markhor/markhor/
+  thp_autocloud:
+    path: ../../Autocloud/autocloud/
   flutter:
     sdk: flutter
 
