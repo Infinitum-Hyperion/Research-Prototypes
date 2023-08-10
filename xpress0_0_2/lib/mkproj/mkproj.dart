@@ -5,12 +5,7 @@ import 'dart:io';
 
 part 'auth_api.dart';
 
-final Observatory observatory = Observatory();
-final AuthAPI authAPI = AuthAPI();
-final Network network = Network();
-final MarkhorWorkstation workstation = MarkhorWorkstation()
-  ..binObservatory(observatory)
-  ..bindAgents([
-    network,
-    authAPI,
-  ]);
+final MarkhorWorkstation workstation = MarkhorWorkstation();
+final Observatory observatory = Observatory(workstation: workstation);
+final AuthAPI authAPI = AuthAPI(workstation: workstation);
+final Network network = Network(workstation: workstation);

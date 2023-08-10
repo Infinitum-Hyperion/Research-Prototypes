@@ -2,6 +2,7 @@ part of xpress.mkproj;
 
 class AuthAPI extends APIEmulator {
   AuthAPI({
+    required super.workstation,
     super.port,
   });
 
