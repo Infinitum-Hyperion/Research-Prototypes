@@ -1,0 +1,63 @@
+{
+    "agreements": [
+        {
+            "id": "SLA1",
+            "description": "System must be resilient enough to recover from errors quickly",
+            "SLOs": [
+                {
+                    "id": "SLA1-O1",
+                    "featureId": "max_downtime_duration_ms",
+                    "targetValue": "2000"
+                }
+            ]
+        },
+        {
+            "id": "SLA2",
+            "description": "System must be available 99% of the time",
+            "SLOs": [
+                {
+                    "id": "SLA2-O1",
+                    "featureId": "total_downtime_percentage",
+                    "targetValue": "1"
+                }
+            ]
+        },
+        {
+            "id": "SLA3",
+            "description": "System must be snappy",
+            "SLOs": [
+                {
+                    "id": "SLA3-O1",
+                    "featureId": "launch_duration_ms",
+                    "targetValue": "800"
+                },
+                {
+                    "id": "SLA3-O2",
+                    "featureId": "request_max_duration_ms",
+                    "targetValue": "800"
+                }
+            ]
+        },
+        {
+            "id": "SLA4",
+            "description": "System must protect user data in transit",
+            "SLOs": [
+                {
+                    "id": "SLA4-O1",
+                    "featureId": "time_to_discovery_minutes",
+                    "targetValue": "60"
+                },
+                {
+                    "id": "SLA4-O2",
+                    "featureId": "time_to_classification_ms",
+                    "targetValue": "20000"
+                },
+                {
+                    "id": "SLA4-O3",
+                    "featureId": "time_to_resolution_ms",
+                    "targetValue": "30000"
+                }
+            ]
+        }
+    ]
+}
