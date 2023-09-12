@@ -4,7 +4,7 @@ class AuthAPI extends APIEmulator {
   AuthAPI({
     required super.workstation,
     super.port,
-  });
+  }) : super(componentId: 'auth_api');
 
   @override
   HttpResponse handleRequest(HttpRequest request) {

@@ -17,15 +17,17 @@ bool isAuthenticatedAsMember = false;
 
 void main() async {
   await workstation.initAsyncComponents();
-  final String res = await network.httpRequest(
-    () async {
-      return await HttpRequest.getString(
-          "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
-    },
-    configs: const HttpRequestConfigs(
-      delay: Duration(seconds: 2),
-    ),
-  );
+  final String res = await OTel.track<String>('weather_req', () async {
+    return await network.httpRequest(
+      () async {
+        return await HttpRequest.getString(
+            "https://6cd49fe1-6247-42d9-9f93-b10dfd48be0a.mock.pstmn.io/weather");
+      },
+      configs: const HttpRequestConfigs(
+        delay: Duration(seconds: 2),
+      ),
+    );
+  });
 
   runApp(XPressApp(
     temp: res,

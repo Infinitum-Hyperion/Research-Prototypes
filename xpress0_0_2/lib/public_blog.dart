@@ -5,7 +5,10 @@ const String _randomText =
 
 class PublicBlog extends StatelessWidget {
   final MethodInvocationObserver<Widget> invocationObserver =
-      MethodInvocationObserver(workstation: workstation);
+      MethodInvocationObserver(
+    workstation: workstation,
+    componentId: 'public_blog',
+  );
 
   PublicBlog() {
     observatory.attachPublisherFor<MethodInvocationReport>(invocationObserver);
