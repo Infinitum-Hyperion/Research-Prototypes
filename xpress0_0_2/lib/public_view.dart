@@ -1,10 +1,5 @@
 part of xpress;
 
-const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-Random _rnd = Random();
-
-String getRandomString() => String.fromCharCodes(Iterable.generate(
-    30, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
 
 class PublicView extends StatefulWidget {
   final List<BlogPreviewCard> cards = List<BlogPreviewCard>.generate(

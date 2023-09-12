@@ -7,7 +7,7 @@ class AuthAPI extends APIEmulator {
   }) : super(componentId: 'auth_api');
 
   @override
-  HttpResponse handleRequest(HttpRequest request) {
+  io.HttpResponse handleRequest(io.HttpRequest request) {
     return request.response..statusCode = 200;
   }
 }
