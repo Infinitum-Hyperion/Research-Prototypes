@@ -10,10 +10,13 @@ final SystemGoals goals = SystemGoals(
           systemParameter: SystemParameter(),
           targetValue: 2000,
           elementId: getRandomString(),
+          systemId: systemId,
         ),
       ],
       elementId: getRandomString(),
+      systemId: systemId,
     ),
   ],
   elementId: getRandomString(),
+  systemId: systemId,
 );

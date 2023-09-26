@@ -10,14 +10,17 @@ part './cells.dart';
 part './goals.dart';
 
 const String systemId = 'xpress';
-final AutocloudWorkstation workstation = AutocloudWorkstation();
-final Observatory observatory = Observatory(workstation: workstation);
-final AuthAPI authAPI = AuthAPI(workstation: workstation);
-final WeatherRequestCell weatherRequestCell = WeatherRequestCell();
-final Network network = Network(
-  workstation: workstation,
-  componentId: 'network1',
+
+final Observatory observatory = Observatory(
+  datahouse: Datahouse(),
+  contextMonitor: ContextMonitor(),
+  logMonitor: LogMonitor(),
 );
+
+final AuthAPI authAPI = AuthAPI();
+final WeatherRequestCell weatherRequestCell =
+    WeatherRequestCell(observatory: observatory);
+final Network network = Network();
 
 const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
 Random _rnd = Random();

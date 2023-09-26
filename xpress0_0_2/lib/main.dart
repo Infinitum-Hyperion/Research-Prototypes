@@ -15,7 +15,7 @@ part './member_only_blog.dart';
 bool isAuthenticatedAsMember = false;
 
 void main() async {
-  await workstation.initAsyncComponents();
+  await authAPI.initServer();
   final String res = await weatherRequestCell.component.action(null);
 
   runApp(XPressApp(

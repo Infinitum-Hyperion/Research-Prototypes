@@ -1,10 +1,11 @@
 part of xpress.mkproj;
 
-class WeatherRequestCell extends AutonomicCell {
+class WeatherRequestCell extends AutonomicMotorCell<void, Future<String>> {
   late AutonomicComponent<void, Future<String>> _component;
 
-  WeatherRequestCell()
-      : super(
+  WeatherRequestCell({
+    required super.observatory,
+  }) : super(
           elementId: getRandomString(),
           cellLabel: 'weather_request_cell',
           systemId: systemId,
@@ -15,7 +16,7 @@ class WeatherRequestCell extends AutonomicCell {
       systemId: systemId,
 
       /// This is how you decalare a method with no arguments
-      action: ([void input]) async {
+      action: ([void _]) async {
         return await network.httpRequest(
           () async {
             return await HttpRequest.getString(
