@@ -1,6 +1,5 @@
 part of xpress;
 
-
 class PublicView extends StatefulWidget {
   final List<BlogPreviewCard> cards = List<BlogPreviewCard>.generate(
     10,
@@ -31,12 +30,15 @@ class PublicViewState extends State<PublicView> {
                   onChanged: (newValue) {},
                 ),
                 const SizedBox(height: 30),
-                GridView.count(
-                  crossAxisCount: 3,
-                  childAspectRatio: 2,
-                  children: widget.cards
-                      .where((card) => card.title.contains(textController.text))
-                      .toList(),
+                Flexible(
+                  child: GridView.count(
+                    crossAxisCount: 3,
+                    childAspectRatio: 2,
+                    children: widget.cards
+                        .where(
+                            (card) => card.title.contains(textController.text))
+                        .toList(),
+                  ),
                 ),
               ],
             )),

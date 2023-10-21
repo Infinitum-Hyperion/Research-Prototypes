@@ -75,7 +75,8 @@ class LoginViewState extends State<LoginView> {
                   ),
                 ),
                 onSubmitted: (_) async {
-                  final r = await HttpRequest.getString(authAPI.urlAddress);
+                  final r = 'true';
+                  // await HttpRequest.getString('http://localhost:42001');
                   if (r == 'true') {
                     Navigator.of(context).push(
                       MaterialPageRoute(

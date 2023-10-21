@@ -21,10 +21,7 @@ final Observatory observatory = Observatory(
   logMonitor: LogMonitor(),
 );
 
-final AuthAPI authAPI = AuthAPI(
-  channel: authApiTeleChannel,
-  observatory: observatory,
-);
+
 final WeatherRequestCell weatherRequestCell =
     WeatherRequestCell(observatory: observatory);
 final Network network = Network();
@@ -41,8 +38,7 @@ final MethodInvocationObserver buildInvocationObserver =
 /// Telemetry Channels
 ////////////////////////////////
 
-final authApiTeleChannel = TelemetryChannel(systemId: systemId),
-    buildObsTeleChannel = TelemetryChannel(systemId: systemId);
+final buildObsTeleChannel = TelemetryChannel(systemId: systemId);
 
 ////////////////////////////////
 /// Others

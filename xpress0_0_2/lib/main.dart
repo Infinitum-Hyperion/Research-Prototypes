@@ -15,7 +15,7 @@ part './member_only_blog.dart';
 bool isAuthenticatedAsMember = false;
 
 void main() async {
-  await authAPI.initServer();
+  // TODO: insert some code to check that the remote auth API is ready
   final String res = await weatherRequestCell.component.action(null);
 
   runApp(XPressApp(
