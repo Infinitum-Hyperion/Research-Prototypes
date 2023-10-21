@@ -11,17 +11,42 @@ part './goals.dart';
 
 const String systemId = 'xpress';
 
+////////////////////////////////
+/// Autonomic Elements
+////////////////////////////////
+
 final Observatory observatory = Observatory(
   datahouse: Datahouse(),
   contextMonitor: ContextMonitor(),
   logMonitor: LogMonitor(),
 );
 
-final AuthAPI authAPI = AuthAPI();
+final AuthAPI authAPI = AuthAPI(
+  channel: authApiTeleChannel,
+  observatory: observatory,
+);
 final WeatherRequestCell weatherRequestCell =
     WeatherRequestCell(observatory: observatory);
 final Network network = Network();
 
+final MethodInvocationObserver buildInvocationObserver =
+    MethodInvocationObserver(
+  observatory: observatory,
+  channel: buildObsTeleChannel,
+  elementId: 'public_blog_build_obs',
+  systemId: systemId,
+);
+
+////////////////////////////////
+/// Telemetry Channels
+////////////////////////////////
+
+final authApiTeleChannel = TelemetryChannel(systemId: systemId),
+    buildObsTeleChannel = TelemetryChannel(systemId: systemId);
+
+////////////////////////////////
+/// Others
+////////////////////////////////
 const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
 Random _rnd = Random();
 
