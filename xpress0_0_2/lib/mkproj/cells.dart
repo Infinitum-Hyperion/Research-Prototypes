@@ -33,3 +33,22 @@ class WeatherRequestCell extends AutonomicMotorCell<void, Future<String>> {
   @override
   AutonomicComponent<void, Future<String>> get component => _component;
 }
+
+class LaunchDurationSensoryCell extends AutonomicSensoryCell {
+  LaunchDurationSensoryCell({
+    required super.observatory,
+  }) : super(
+          elementId: getRandomString(),
+          systemId: systemId,
+        );
+
+  @override
+  void init() {
+    observatory.datahouse.addListener<MethodInvocationReport>(
+      channel: launchDurTeleChannel,
+      listener: ChannelListener(notifier: (TelemetryItem item) {
+        print(item.payload.serialize());
+      }),
+    );
+  }
+}

@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/red_ferrari_XyTXtYX6xOY.jpg
     - assets/porsche_919_hybrid_lQkJrlO093Y.jpg
+    - assets/objectives.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

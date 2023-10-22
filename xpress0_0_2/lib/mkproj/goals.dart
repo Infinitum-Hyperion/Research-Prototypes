@@ -6,8 +6,12 @@ final SystemGoals goals = SystemGoals(
       description:
           'System must be resilient enough to recover from errors quickly',
       objectives: [
-        ServiceLevelObjective<int>(
-          systemParameter: SystemParameter(),
+        ServiceLevelObjective(
+          systemParameter: SystemParameter(
+            featureId: 'max_downtime_duration_ms',
+            elementId: getRandomString(),
+            systemId: systemId,
+          ),
           targetValue: 2000,
           elementId: getRandomString(),
           systemId: systemId,

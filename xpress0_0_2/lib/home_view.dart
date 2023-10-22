@@ -9,6 +9,16 @@ class HomeView extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    launchStopwatch.stop();
+    print('stopping');
+    datahouse.publishTo(
+      channel: launchDurTeleChannel,
+      item: TelemetryItem(
+        systemId: systemId,
+        payload:
+            MethodInvocationReport(executionDuration: launchStopwatch.elapsed),
+      ),
+    );
     return Material(
       child: Center(
         child: Column(
